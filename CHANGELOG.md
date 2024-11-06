@@ -5,4 +5,5 @@ The date format is based on [Standard ISO](https://www.iso.org/iso-8601-date-and
 
 ## 0.0.1 (Unreleased)
 
+- chores: setup mvvm
 - chores: init repository
