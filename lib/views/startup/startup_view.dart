@@ -24,7 +24,13 @@ class _StartupViewState extends State<StartupView> {
           mainAxisSpacing: Spacing.medium,
           crossAxisCount: 2,
           children: List.generate(100, (index) {
-            return CustomElevatedCard();
+            return const CustomElevatedCard(
+              recipe: "Risotto aux légumes",
+              imageUrl: "https://cdn-icons-png.flaticon.com/256/6039/6039575.png",
+              price: 3.4,
+              personsNb: 1,
+              cookingTimeInMins: 10,
+            );
           }),
         ),
       ),

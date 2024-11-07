@@ -5,22 +5,26 @@ import 'package:ecomeal/theme/sizes.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedCard extends StatelessWidget {
-  // final String label;
-  // final String imageUrl;
-  // final String description;
+  final String recipe;
+  final String imageUrl;
+  final double price;
+  final int personsNb;
+  final int cookingTimeInMins;
+
   // final VoidCallback onTap;
 
   const CustomElevatedCard({
     super.key,
-    // required this.label,
-    // required this.imageUrl,
-    // required this.description,
-    // required this.onTap
+    required this.recipe,
+    required this.imageUrl,
+    required this.price,
+    required this.personsNb,
+    required this.cookingTimeInMins
   });
 
   @override
   Widget build(BuildContext context){
-    return Container(
+    return SizedBox(
       width: 170,
       height: 220,
       child: Card(
@@ -35,7 +39,7 @@ class CustomElevatedCard extends StatelessWidget {
               width: double.infinity,
               height: 100,
               child: CachedNetworkImage(
-                imageUrl: "https://cdn-icons-png.flaticon.com/256/6039/6039575.png",
+                imageUrl: imageUrl,
                 fit: BoxFit.contain,
               ),
             ),
@@ -44,7 +48,7 @@ class CustomElevatedCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                "Risotto aux légumes",
+                recipe,
                 style: context.titleSmall!.copyWith(
                   color: Colors.black
                 ),
@@ -57,7 +61,7 @@ class CustomElevatedCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                "Prix: 3.4€",
+                "Prix: $price€",
                 style: context.bodyMedium!.copyWith(
                   color: Colors.black
                 ),
@@ -68,7 +72,7 @@ class CustomElevatedCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                "Personnes: 1",
+                "Personnes: $personsNb",
                 style: context.bodyMedium!.copyWith(
                   color: Colors.black
                 ),
@@ -79,7 +83,7 @@ class CustomElevatedCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                "Préparation: 10mins",
+                "Préparation: $cookingTimeInMins mins",
                 style: context.bodyMedium!.copyWith(
                   color: Colors.black
                 ),
