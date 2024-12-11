@@ -1,3 +1,4 @@
+import 'package:ecomeal/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
@@ -128,7 +129,9 @@ class _ValidatepageState extends State<Validation_v> {
 
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
 
-            ElevatedButton(onPressed: () {},
+            ElevatedButton(onPressed: (_currentValue >= _minValue) ? () {
+              Navigator.pushNamed(context, RoutePaths.startup);
+            } : null,
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.6, MediaQuery.of(context).size.height*0.05),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
