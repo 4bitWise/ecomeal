@@ -30,7 +30,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppStrings.appName,
-      initialRoute: RoutePaths.startup,
+      initialRoute: RoutePaths.budget,
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
       navigatorKey: AppGlobal.navigatorKey
     );
