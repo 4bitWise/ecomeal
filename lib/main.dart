@@ -1,7 +1,6 @@
 import 'package:ecomeal/app_locator.dart';
 // import 'package:ecomeal/app_providers.dart';
 import 'package:ecomeal/app_router.dart';
-import 'package:ecomeal/constants/app_global.dart';
 import 'package:ecomeal/constants/routes.dart';
 import 'package:ecomeal/constants/strings.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,6 @@ class App extends StatelessWidget {
       title: AppStrings.appName,
       initialRoute: RoutePaths.budget,
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
-      navigatorKey: AppGlobal.navigatorKey
     );
   }
 }

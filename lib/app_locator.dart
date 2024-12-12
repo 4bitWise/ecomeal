@@ -1,6 +1,6 @@
 import 'package:ecomeal/services/api/api_service.dart';
-import 'package:ecomeal/services/recipes_service.dart';
-import 'package:ecomeal/viewmodels/startup/startup_viewmodel.dart';
+import 'package:ecomeal/services/recipes/recipes_service.dart';
+import 'package:ecomeal/viewmodels/budget/budget_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
@@ -13,7 +13,7 @@ void registerServices() {
 }
 
 void registerViewModels() {
-   locator.registerFactory<StartupViewModel>(() => StartupViewModel());
+  locator.registerFactory<BudgetViewModel>(() => BudgetViewModel());
 }
 
 void registerProviders() {

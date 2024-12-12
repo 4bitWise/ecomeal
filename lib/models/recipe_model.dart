@@ -16,32 +16,31 @@ class Recipe implements BaseModel {
     this.preparationTime,
     this.servings,
     this.ingredients,
-    this.instructions
+    this.instructions,
   });
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "preparation_time": preparationTime,
-    "servings": servings,
-    "ingredients": ingredients,
-    "instructions": instructions
-  };
+        "id": id,
+        "name": name,
+        "preparation_time": preparationTime,
+        "servings": servings,
+        "ingredients": ingredients,
+        "instructions": instructions
+      };
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
     try {
       return Recipe(
-        id: json['id'] as String,
-        name: json['name'] as String,
-        preparationTime: (json['preparation_time'] as num).toDouble(),
-        servings: (json['servings'] as num).toDouble(),
-        ingredients: (json['ingredients'] as List<dynamic>)
-          .map((item) => Ingredient.fromJson(item as Map<String, dynamic>))
-          .toList(),
-        instructions: (json['instructions'] as List<dynamic>)
-          .map((item) => item as String)
-          .toList()
-      );
+          id: json['id'] as String,
+          name: json['name'] as String,
+          preparationTime: (json['preparation_time'] as num).toDouble(),
+          servings: (json['servings'] as num).toDouble(),
+          ingredients: (json['ingredients'] as List<dynamic>)
+              .map((item) => Ingredient.fromJson(item as Map<String, dynamic>))
+              .toList(),
+          instructions: (json['instructions'] as List<dynamic>)
+              .map((item) => item as String)
+              .toList());
     } catch (e) {
       throw Exception(e);
     }

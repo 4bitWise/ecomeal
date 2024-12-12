@@ -1,24 +1,22 @@
 import 'package:ecomeal/app_locator.dart';
-import 'package:ecomeal/common/elevated_card.dart';
+import 'package:ecomeal/views/recipes/widgets/elevated_card.dart';
 import 'package:ecomeal/theme/sizes.dart';
-import 'package:ecomeal/viewmodels/startup/startup_viewmodel.dart';
+import 'package:ecomeal/viewmodels/recipes/recipes_viewmodel.dart';
 import 'package:ecomeal/views/base.view.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class StartupView extends StatefulWidget {
-  const StartupView({
-    super.key
-  });
+class RecipesView extends StatefulWidget {
+  const RecipesView({super.key});
 
   @override
-  State<StartupView> createState() => _StartupViewState();
+  State<RecipesView> createState() => _RecipesViewState();
 }
 
-class _StartupViewState extends State<StartupView> {
+class _RecipesViewState extends State<RecipesView> {
   @override
   Widget build(BuildContext context) {
-    return BaseView<StartupViewModel>(
+    return BaseView<RecipesViewModel>(
       onModelReady: (model) async {
         await model.fetchRecipes();
         locator<Logger>().i(model.recipes);
@@ -30,7 +28,8 @@ class _StartupViewState extends State<StartupView> {
           children: List.generate(model.recipes.length, (index) {
             return CustomElevatedCard(
               recipe: model.recipes[index].name!,
-              imageUrl: "https://cdn-icons-png.flaticon.com/256/6039/6039575.png",
+              imageUrl:
+                  "https://cdn-icons-png.flaticon.com/256/6039/6039575.png",
               // price: 3.4,
               personsNb: model.recipes[index].servings!.toInt(),
               cookingTimeInMins: model.recipes[index].preparationTime!,

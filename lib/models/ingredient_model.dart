@@ -11,11 +11,8 @@ class Ingredient implements BaseModel {
     this.quantity,
   });
 
-  Map<String, dynamic> toJson() => {
-    "ingredient_id": ingredientId,
-    "unit_id": unitId,
-    "quantity": quantity
-  };
+  Map<String, dynamic> toJson() =>
+      {"ingredient_id": ingredientId, "unit_id": unitId, "quantity": quantity};
 
   factory Ingredient.fromJson(Map<String, dynamic> json) {
     try {
