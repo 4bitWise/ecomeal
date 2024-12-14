@@ -7,21 +7,10 @@ class ApiService extends BaseService {
   late Dio _dio;
 
   ApiService() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: ApiConstants.baseUrl, // Replace with your base URL
-        connectTimeout: const Duration(milliseconds: 50000),
-        receiveTimeout: const Duration(milliseconds: 50000),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      ),
-    );
     _dio = Dio(BaseOptions(
       baseUrl: ApiConstants.baseUrl,
-      connectTimeout: const Duration(milliseconds: 50000),
-      receiveTimeout: const Duration(milliseconds: 50000),
+      connectTimeout: const Duration(milliseconds: 200000),
+      receiveTimeout: const Duration(milliseconds: 200000),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -40,7 +29,8 @@ class ApiService extends BaseService {
       case DioExceptionType.receiveTimeout:
         throw Exception('Connection timeout');
       case DioExceptionType.badResponse:
-        throw Exception('Received invalid status code: ${error.response?.statusCode}');
+        throw Exception(
+            'Received invalid status code: ${error.response?.statusCode}');
       case DioExceptionType.cancel:
         throw Exception('Request to API server was cancelled');
       case DioExceptionType.unknown:
@@ -51,7 +41,8 @@ class ApiService extends BaseService {
   }
 
   // GET request
-  Future<Response> getRequest(String endpoint, {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
+  Future<Response> getRequest(String endpoint,
+      {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
     try {
       final response = await _dio.get(
         endpoint,
@@ -66,9 +57,11 @@ class ApiService extends BaseService {
   }
 
   // POST request
-  Future<Response> postRequest(String endpoint, {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
+  Future<Response> postRequest(String endpoint,
+      {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
     try {
-      final response = await _dio.post(endpoint, data: data, queryParameters: queryParams);
+      final response =
+          await _dio.post(endpoint, data: data, queryParameters: queryParams);
       return response;
     } on DioException catch (e) {
       _handleError(e);
@@ -77,9 +70,11 @@ class ApiService extends BaseService {
   }
 
   // PUT request
-  Future<Response> putRequest(String endpoint, {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
+  Future<Response> putRequest(String endpoint,
+      {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
     try {
-      final response = await _dio.put(endpoint, data: data, queryParameters: queryParams);
+      final response =
+          await _dio.put(endpoint, data: data, queryParameters: queryParams);
       return response;
     } on DioException catch (e) {
       _handleError(e);
@@ -88,9 +83,11 @@ class ApiService extends BaseService {
   }
 
   // DELETE request
-  Future<Response> deleteRequest(String endpoint, {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
+  Future<Response> deleteRequest(String endpoint,
+      {Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
     try {
-      final response = await _dio.delete(endpoint, data: data, queryParameters: queryParams);
+      final response =
+          await _dio.delete(endpoint, data: data, queryParameters: queryParams);
       return response;
     } on DioException catch (e) {
       _handleError(e);
@@ -99,7 +96,10 @@ class ApiService extends BaseService {
   }
 
   // GET request
-  Future<Response> request(String endpoint, {required Options options, Map<String, dynamic>? data, Map<String, dynamic>? queryParams}) async {
+  Future<Response> request(String endpoint,
+      {required Options options,
+      Map<String, dynamic>? data,
+      Map<String, dynamic>? queryParams}) async {
     try {
       final response = await _dio.request(
         endpoint,
