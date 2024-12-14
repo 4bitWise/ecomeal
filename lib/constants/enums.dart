@@ -6,3 +6,10 @@ enum ViewModelState {
   busy,
   idle,
 }
+
+/// [UnitType]
+/// Enum used to represent the MeasureUnit type
+enum UnitType {
+  weight,
+  volume,
+}

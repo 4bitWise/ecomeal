@@ -24,7 +24,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Debug oversized images
-    debugInvertOversizedImages = true;
+    // debugInvertOversizedImages = true;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

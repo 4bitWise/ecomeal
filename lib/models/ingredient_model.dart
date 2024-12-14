@@ -1,28 +1,31 @@
 import 'base.model.dart';
 
 class Ingredient implements BaseModel {
-  String? ingredientId;
-  String? unitId;
-  double? quantity;
+  String id;
+  double quantity;
+  String unitId;
+  double? price;
 
   Ingredient({
-    this.ingredientId,
-    this.unitId,
-    this.quantity,
+    required this.id,
+    required this.unitId,
+    required this.quantity,
+    this.price,
   });
 
-  Map<String, dynamic> toJson() =>
-      {"ingredient_id": ingredientId, "unit_id": unitId, "quantity": quantity};
+  Map<String, dynamic> toJson() => {
+        "ingredient_id": id,
+        "unit_id": unitId,
+        "quantity": quantity,
+        "price": price
+      };
 
   factory Ingredient.fromJson(Map<String, dynamic> json) {
-    try {
-      return Ingredient(
-        ingredientId: json['ingredient_id'] as String?,
-        unitId: json['unit_id'] as String?,
-        quantity: (json['quantity'] as num).toDouble(),
-      );
-    } catch (e) {
-      throw Exception(e);
-    }
+    return Ingredient(
+      id: json['ingredient_id'] as String,
+      unitId: json['unit_id'] as String,
+      quantity: (json['quantity'] as num).toDouble(),
+      price: (json['price'] as num?)?.toDouble(),
+    );
   }
 }
