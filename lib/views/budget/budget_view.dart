@@ -16,6 +16,7 @@ class BudgetView extends StatefulWidget {
 }
 
 class _BudgetViewState extends State<BudgetView> {
+
   @override
   Widget build(BuildContext context) {
     return BaseView<BudgetViewModel>(

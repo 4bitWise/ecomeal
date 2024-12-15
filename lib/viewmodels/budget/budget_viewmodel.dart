@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class BudgetViewModel extends BaseViewModel {
-  double currentBudget = 100; // 100 by default
+  double currentBudget = 50; // 100 by default
   final double minimalBudget = 50;
   final double maximalBudget = 10000;
 

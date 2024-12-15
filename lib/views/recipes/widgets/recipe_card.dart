@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class RecipeCard extends StatelessWidget {
   final String recipe;
+  final int repeat;
   final String imageUrl;
   final double cost;
   final int personsNb;
@@ -17,6 +18,7 @@ class RecipeCard extends StatelessWidget {
   const RecipeCard({
     super.key,
     required this.recipe,
+    required this.repeat,
     required this.imageUrl,
     required this.cost,
     required this.personsNb,
@@ -51,7 +53,7 @@ class RecipeCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  recipe,
+                  '$recipe x$repeat',
                   style: context.titleSmall!.copyWith(color: Colors.black),
                   softWrap: true,
                   textAlign: TextAlign.center,

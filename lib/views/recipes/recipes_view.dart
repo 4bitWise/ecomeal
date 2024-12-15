@@ -15,6 +15,9 @@ class _RecipesViewState extends State<RecipesView> {
   @override
   Widget build(BuildContext context) {
     return BaseView<RecipesViewModel>(
+      onModelReady: (model) {
+        model.processRecipes();
+      },
       builder: (context, model, _) => Padding(
         padding: const EdgeInsets.only(
           bottom: 8.0,
@@ -24,21 +27,21 @@ class _RecipesViewState extends State<RecipesView> {
         child: GridView.count(
           mainAxisSpacing: Spacing.medium,
           crossAxisCount: 2,
-          children: List.generate(
-            model.recipes.length,
-            (index) {
+          children: model.data.keys.map(
+            (id) {
               return RecipeCard(
-                recipe: model.recipes[index].name,
+                recipe: model.data[id]!.recipe.name,
+                repeat: model.data[id]!.count,
                 imageUrl:
                     "https://cdn.prod.website-files.com/62e18da95149ec2ee0d87b5b/659718a86e0a8047118596ed_6560a1733dc1fe2e8021df64_thumbnail-655e11b5bd2fc.webp",
                 // price: 3.4,
-                personsNb: model.recipes[index].servings.toInt(),
-                cookingTimeInMins: model.recipes[index].preparationTime,
-                instructions: model.recipes[index].instructions,
-                cost: model.recipes[index].cost,
+                personsNb: model.data[id]!.recipe.servings.toInt(),
+                cookingTimeInMins: model.data[id]!.recipe.preparationTime,
+                instructions: model.data[id]!.recipe.instructions,
+                cost: model.data[id]!.recipe.cost,
               );
             },
-          ),
+          ).toList(),
         ),
       ),
     );
